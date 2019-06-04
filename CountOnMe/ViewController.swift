@@ -8,6 +8,8 @@
 
 import UIKit
 
+let operators = ["+", "x", "-", "/", "="]
+
 class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
@@ -16,17 +18,8 @@ class ViewController: UIViewController {
         return textView.text.split(separator: " ").map { "\($0)" }
     }
     
-    // Error check computed variables
-    var expressionIsCorrect: Bool {
-        return elements.last != "+" && elements.last != "-"
-    }
-    
     var expressionHaveEnoughElement: Bool {
         return elements.count >= 3
-    }
-    
-    var canAddOperator: Bool {
-        return elements.last != "+" && elements.last != "-"
     }
     
     var expressionHaveResult: Bool {
@@ -39,9 +32,94 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func canAddComa() -> Bool {
+            if let lastElement = elements.last {
+                if lastElement.contains(".") {
+                    return false
+                }
+                for character in operators {
+                    if lastElement.contains(character) {
+                        return false
+                    }
+                }
+            } else {
+                return false
+            }
+        return true
+    }
+    
+    func canAddOperator() -> Bool {
+        if let lastElement = elements.last {
+            for character in operators {
+                if lastElement.contains(character) {
+                    return false
+                }
+            }
+        } else {
+            return false
+        }
+        return true
+    }
+    
+    func calcResult() {
+        
+        var iterator = 0
+        
+        while iterator < elements.count - 1 {
+            let element = elements[iterator]
+            
+            if element == "x" || element == "/" {
+                let prevElement = elements[iterator - 1]
+                let nextElement = elements[iterator + 1]
+                
+                var res : Float = 0
+                
+                if element == "x" {
+                    res = Float(prevElement)! * Float(nextElement)!
+                } else {
+                    res = Float(prevElement)! / Float(nextElement)!
+                }
+                
+                let toReplace = prevElement + " " + element + " " + nextElement
+                
+                self.textView.text = self.textView.text.replacingOccurrences(of: toReplace, with: String(res))
+                    calcResult()
+                    return
+                
+            }
+            iterator += 1
+        }
+        
+        iterator = 0
+        
+        while iterator < elements.count - 1 {
+            let element = elements[iterator]
+            
+            if element == "+" || element == "-" {
+                let prevElement = elements[iterator - 1]
+                let nextElement = elements[iterator + 1]
+                
+                var res : Float = 0
+                
+                if element == "+" {
+                    res = Float(prevElement)! + Float(nextElement)!
+                } else {
+                    res = Float(prevElement)! - Float(nextElement)!
+                }
+                
+                let toReplace = prevElement + " " + element + " " + nextElement
+                
+                self.textView.text = self.textView.text.replacingOccurrences(of: toReplace, with: String(res))
+                calcResult()
+                return
+                
+            }
+            iterator += 1
+        }
+    }
     
     // View actions
-    @IBAction func tappedNumberButton(_ sender: UIButton) {
+    @IBAction func tappedButton(_ sender: UIButton) {
         guard let numberText = sender.title(for: .normal) else {
             return
         }
@@ -50,64 +128,33 @@ class ViewController: UIViewController {
             textView.text = ""
         }
         
-        textView.text.append(numberText)
-    }
-    
-    @IBAction func tappedAdditionButton(_ sender: UIButton) {
-        if canAddOperator {
-            textView.text.append(" + ")
-        } else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alertVC, animated: true, completion: nil)
-        }
-    }
-    
-    @IBAction func tappedSubstractionButton(_ sender: UIButton) {
-        if canAddOperator {
-            textView.text.append(" - ")
-        } else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alertVC, animated: true, completion: nil)
-        }
-    }
-
-    @IBAction func tappedEqualButton(_ sender: UIButton) {
-        guard expressionIsCorrect else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            return self.present(alertVC, animated: true, completion: nil)
+        if numberText == "." && !canAddComa() {
+            return
         }
         
-        guard expressionHaveEnoughElement else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Démarrez un nouveau calcul !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            return self.present(alertVC, animated: true, completion: nil)
+        if operators.contains(numberText) && !canAddOperator() {
+            return
         }
         
-        // Create local copy of operations
-        var operationsToReduce = elements
-        
-        // Iterate over operations while an operand still here
-        while operationsToReduce.count > 1 {
-            let left = Int(operationsToReduce[0])!
-            let operand = operationsToReduce[1]
-            let right = Int(operationsToReduce[2])!
-            
-            let result: Int
-            switch operand {
-            case "+": result = left + right
-            case "-": result = left - right
-            default: fatalError("Unknown operator !")
+        if numberText == "=" {
+            if expressionHaveEnoughElement {
+                calcResult()
             }
-            
-            operationsToReduce = Array(operationsToReduce.dropFirst(3))
-            operationsToReduce.insert("\(result)", at: 0)
+            else {
+                return
+            }
         }
         
-        textView.text.append(" = \(operationsToReduce.first!)")
+        if numberText == "AC" {
+            textView.text = ""
+        } else {
+            if (operators.contains(numberText)) {
+                textView.text.append(" ")
+            }
+            textView.text.append(numberText)
+            if (operators.contains(numberText)) {
+                textView.text.append(" ")
+            }
+        }
     }
-
 }
-

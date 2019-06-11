@@ -29,6 +29,15 @@ class SimpleCalcUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let app = XCUIApplication()
+        
+        app.buttons["1"].tap()
+        app.buttons["+"].tap()
+        app.buttons["1"].tap()
+        
+        let typeLabel = app.staticTexts["1 + 1"]
+//        let typeLabel = app.textViews["1 + 1"]
+        XCTAssert(typeLabel.exists)
     }
 
 }

@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var label: UILabel!
     @IBOutlet var numberButtons: [UIButton]!
     
     var simpleCalc: SimpleCalc = SimpleCalc()
@@ -21,7 +22,7 @@ class ViewController: UIViewController {
     
     // Updqte UI and Logic expression
     func updateExpression(_ newExpression: String) {
-        textView.text = newExpression
+        label.text = newExpression
         simpleCalc.expression = newExpression
     }
     

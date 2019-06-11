@@ -45,7 +45,7 @@ class SimpleCalc {
         return true
     }
     
-    // cannot add to operators one after the others
+    // cannot add two operators one after the other
     func canAddOperator() -> Bool {
         if let lastElement = elements.last {
             for character in operators {
@@ -97,9 +97,21 @@ class SimpleCalc {
                 var res : Float = 0
                 
                 if element == "x" {
-                    res = Float(prevElement)! * Float(nextElement)!
+                    if let elem1 = Float(prevElement),
+                        let elem2 = Float(nextElement)
+                    {
+                        res = elem1 * elem2
+                    } else {
+                        return "Inf"
+                    }
                 } else {
-                    res = Float(prevElement)! / Float(nextElement)!
+                    if let elem1 = Float(prevElement),
+                        let elem2 = Float(nextElement)
+                    {
+                        res = elem1 / elem2
+                    } else {
+                        return "Inf"
+                    }
                 }
                 
                 let toReplace = prevElement + " " + element + " " + nextElement
@@ -122,9 +134,21 @@ class SimpleCalc {
                 var res : Float = 0
                 
                 if element == "+" {
-                    res = Float(prevElement)! + Float(nextElement)!
+                    if let elem1 = Float(prevElement),
+                        let elem2 = Float(nextElement)
+                    {
+                        res = elem1 + elem2
+                    } else {
+                        return "Inf"
+                    }
                 } else {
-                    res = Float(prevElement)! - Float(nextElement)!
+                    if let elem1 = Float(prevElement),
+                        let elem2 = Float(nextElement)
+                    {
+                        res = elem1 - elem2
+                    } else {
+                        return "Inf"
+                    }
                 }
                 
                 let toReplace = prevElement + " " + element + " " + nextElement

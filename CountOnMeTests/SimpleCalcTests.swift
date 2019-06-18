@@ -16,7 +16,7 @@
 // Test 8 - Tester une addition suivie d'une multiplication (priorité)
 // Test 9 - Tester un calcul menant a un résultat trop grand
 // Test 10 - Tester que deux virgules ne peuvent pas se suivre
-// Test 11 - Tester un calcul menant un résultat negatif
+// Test 11 - Tester un calcul menant à un résultat negatif
 
 
 import XCTest
@@ -36,96 +36,101 @@ class CountOnMeTests: XCTestCase {
     }
 
     func testDoubleOperator() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+        // Use XCTAssertEqual and related functions to verify your tests produce the correct results.
         
         simpleCalc.addToExpression("1")
         simpleCalc.addToExpression("+")
         simpleCalc.addToExpression("+")
         print(simpleCalc.expression)
-        XCTAssert(simpleCalc.expression == "1 + ")
+        XCTAssertEqual(simpleCalc.expression, "1 + ")
     }
     
     func testInvalidOperation1() {
         simpleCalc.addToExpression("1")
         print(simpleCalc.expression)
-        XCTAssert(!simpleCalc.expressionHaveEnoughElement)
+        XCTAssertEqual(simpleCalc.expressionHaveEnoughElement, false)
     }
 
     func testInvalidOperation2() {
         simpleCalc.addToExpression("1")
         simpleCalc.addToExpression("+")
         print(simpleCalc.expression)
-        XCTAssert(!simpleCalc.expressionHaveEnoughElement)
+        XCTAssertEqual(simpleCalc.expressionHaveEnoughElement, false)
     }
     
     func testInvalidOperation3() {
-        simpleCalc.addToExpression("1")
+        simpleCalc.addToExpression("33")
         simpleCalc.addToExpression("+")
-        simpleCalc.addToExpression("1")
+        simpleCalc.addToExpression("47")
+        simpleCalc.addToExpression("+")
+        simpleCalc.addToExpression("32")
         print(simpleCalc.expression)
-        XCTAssert(simpleCalc.expressionHaveEnoughElement)
+        XCTAssertEqual(simpleCalc.expressionHaveEnoughElement, true)
     }
     
     func testAddition() {
-        simpleCalc.addToExpression("1")
+        simpleCalc.addToExpression("5")
         simpleCalc.addToExpression("+")
-        simpleCalc.addToExpression("1")
-        XCTAssert(simpleCalc.calcResult() == "2.0")
+        simpleCalc.addToExpression("19")
+        XCTAssertEqual(simpleCalc.calcResult(), "24.0")
     }
     
     func testSubstraction() {
-        simpleCalc.addToExpression("1")
+        simpleCalc.addToExpression("42")
         simpleCalc.addToExpression("-")
-        simpleCalc.addToExpression("1")
-        XCTAssert(simpleCalc.calcResult() == "0.0")
+        simpleCalc.addToExpression("31")
+        XCTAssertEqual(simpleCalc.calcResult(), "11.0")
     }
     func testDivision() {
-        simpleCalc.addToExpression("2")
+        simpleCalc.addToExpression("84")
         simpleCalc.addToExpression("/")
-        simpleCalc.addToExpression("2")
-        XCTAssert(simpleCalc.calcResult() == "1.0")
+        simpleCalc.addToExpression("12")
+        XCTAssertEqual(simpleCalc.calcResult(), "7.0")
     }
     func testMultiplication() {
-        simpleCalc.addToExpression("2")
+        simpleCalc.addToExpression("112")
         simpleCalc.addToExpression("x")
-        simpleCalc.addToExpression("2")
-        XCTAssert(simpleCalc.calcResult() == "4.0")
+        simpleCalc.addToExpression("5")
+        XCTAssertEqual(simpleCalc.calcResult(), "560.0")
     }
     func testDivisionByNil() {
         simpleCalc.addToExpression("4")
         simpleCalc.addToExpression("/")
         simpleCalc.addToExpression("0")
-        XCTAssert(simpleCalc.calcResult() == "inf")
+        XCTAssertEqual(simpleCalc.calcResult(), "Error")
     }
     func testPriorityRules() {
-        simpleCalc.addToExpression("2")
-        simpleCalc.addToExpression("x")
         simpleCalc.addToExpression("4")
         simpleCalc.addToExpression("+")
+        simpleCalc.addToExpression("6")
+        simpleCalc.addToExpression("x")
         simpleCalc.addToExpression("2")
-        XCTAssert(simpleCalc.calcResult() == "10.0")
+        simpleCalc.addToExpression("+")
+        simpleCalc.addToExpression("5")
+        
+        XCTAssertEqual(simpleCalc.calcResult(), "21.0")
     }
     
     func testAddComas() {
         simpleCalc.addToExpression(".")
         simpleCalc.addToExpression("+")
         simpleCalc.addToExpression(".")
-        XCTAssert(simpleCalc.calcResult() == "")
+        XCTAssertEqual(simpleCalc.calcResult(), "")
     }
     
     func testNegatif() {
-        simpleCalc.addToExpression("1")
+        simpleCalc.addToExpression("17")
         simpleCalc.addToExpression("-")
-        simpleCalc.addToExpression("2")
-        XCTAssert(simpleCalc.calcResult() == "-1.0")
+        simpleCalc.addToExpression("22")
+        XCTAssertEqual(simpleCalc.calcResult(), "-5.0")
     }
     
     func testOverflow() {
         simpleCalc.addToExpression("999999999999999999999999")
         simpleCalc.addToExpression("x")
         simpleCalc.addToExpression("999999999999999999999999")
-        XCTAssert(simpleCalc.calcResult() == "inf")
+        XCTAssertEqual(simpleCalc.calcResult(), "inf")
     }
 
 }

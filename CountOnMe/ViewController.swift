@@ -32,6 +32,11 @@ class ViewController: UIViewController {
             return
         }
         
+        if numberText == "%" {
+            updateExpression(simpleCalc.calcResultPercent())
+            return
+        }
+        
         if numberText == "=" {
             if simpleCalc.expressionHaveEnoughElement {
                 updateExpression(simpleCalc.calcResult())

@@ -83,6 +83,19 @@ class SimpleCalc {
         expression.append(add)
     }
     
+    // func to calc with a percentage
+    func calcResultPercent() -> String {
+        if self.expressionHaveEnoughElement {
+            _ = calcResult()
+        }
+        if let operand1 = Float(expression),
+            let operand2 = Float("100.0") {
+            let result = operand1 / operand2
+            self.expression = String(result)
+        }
+        return expression
+    }
+    
     // func that sets up arithmetic precedence rules
     func calcResult() -> String {
         _ = calcPriorityOperator()

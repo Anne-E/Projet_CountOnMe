@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     // View Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        label.adjustsFontSizeToFitWidth = true
     }
     
     // Updqte UI and Logic expression

@@ -35,7 +35,7 @@ class SimpleCalc {
         if let lastElement = elements.last {
             return !lastElement.contains(".") || !operators.contains(lastElement)
         }
-        return true
+        return false
     }
     
     // cannot add two operators one after the other
@@ -43,7 +43,7 @@ class SimpleCalc {
         if let lastElement = elements.last {
             return !operators.contains(lastElement)
         }
-        return true
+        return false
     }
     
     func addToExpression(_ toAdd: String) {

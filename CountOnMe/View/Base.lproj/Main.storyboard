@@ -14,10 +14,6 @@
         <scene sceneID="BSq-PH-znu">
             <objects>
                 <viewController id="eqK-jh-KKu" customClass="ViewController" customModule="CountOnMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tQO-Y2-VWE"/>
-                        <viewControllerLayoutGuide type="bottom" id="Fhl-dE-gDl"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eIh-hr-C95">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,7 +30,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="59"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hvM-1I-GBe">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="hvM-1I-GBe">
                                 <rect key="frame" x="15" y="40" width="384" height="282"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="59"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -272,20 +268,20 @@
                         </subviews>
                         <color key="backgroundColor" red="0.87536688539999996" green="0.84808511389999996" blue="0.83804947389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="AWJ-Vl-uau" firstAttribute="trailing" secondItem="isI-Gg-Iye" secondAttribute="trailing" constant="15" id="1Gm-VU-sG0"/>
+                            <constraint firstItem="ZRb-Qv-zDj" firstAttribute="trailing" secondItem="isI-Gg-Iye" secondAttribute="trailing" constant="15" id="1Gm-VU-sG0"/>
                             <constraint firstItem="hvM-1I-GBe" firstAttribute="width" secondItem="T2H-yn-nBB" secondAttribute="width" id="1ny-vH-U9p"/>
                             <constraint firstItem="hvM-1I-GBe" firstAttribute="height" secondItem="T2H-yn-nBB" secondAttribute="height" id="4vb-JD-XFK"/>
-                            <constraint firstItem="isI-Gg-Iye" firstAttribute="leading" secondItem="AWJ-Vl-uau" secondAttribute="leading" constant="15" id="AC0-zc-9PZ"/>
+                            <constraint firstItem="isI-Gg-Iye" firstAttribute="leading" secondItem="ZRb-Qv-zDj" secondAttribute="leading" constant="15" id="AC0-zc-9PZ"/>
                             <constraint firstItem="isI-Gg-Iye" firstAttribute="top" relation="greaterThanOrEqual" secondItem="T2H-yn-nBB" secondAttribute="bottom" constant="10" id="AH2-ZN-XcT"/>
-                            <constraint firstItem="AWJ-Vl-uau" firstAttribute="trailing" secondItem="T2H-yn-nBB" secondAttribute="trailing" constant="15" id="CwT-wl-krD"/>
+                            <constraint firstItem="ZRb-Qv-zDj" firstAttribute="trailing" secondItem="T2H-yn-nBB" secondAttribute="trailing" constant="15" id="CwT-wl-krD"/>
                             <constraint firstItem="isI-Gg-Iye" firstAttribute="top" relation="lessThanOrEqual" secondItem="T2H-yn-nBB" secondAttribute="bottom" constant="30" id="MGV-ut-Jxz"/>
                             <constraint firstItem="hvM-1I-GBe" firstAttribute="centerX" secondItem="T2H-yn-nBB" secondAttribute="centerX" id="Qo3-X0-KuD"/>
-                            <constraint firstItem="Fhl-dE-gDl" firstAttribute="top" secondItem="isI-Gg-Iye" secondAttribute="bottom" constant="10" id="XEw-Hb-rCY"/>
+                            <constraint firstItem="ZRb-Qv-zDj" firstAttribute="bottom" secondItem="isI-Gg-Iye" secondAttribute="bottom" constant="10" id="XEw-Hb-rCY"/>
                             <constraint firstItem="T2H-yn-nBB" firstAttribute="top" secondItem="eIh-hr-C95" secondAttribute="top" constant="40" id="bdr-OA-oSn"/>
                             <constraint firstItem="hvM-1I-GBe" firstAttribute="centerY" secondItem="T2H-yn-nBB" secondAttribute="centerY" id="eYB-hV-kIA"/>
-                            <constraint firstItem="T2H-yn-nBB" firstAttribute="leading" secondItem="AWJ-Vl-uau" secondAttribute="leading" constant="15" id="vSV-WI-9Mp"/>
+                            <constraint firstItem="T2H-yn-nBB" firstAttribute="leading" secondItem="ZRb-Qv-zDj" secondAttribute="leading" constant="15" id="vSV-WI-9Mp"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="AWJ-Vl-uau"/>
+                        <viewLayoutGuide key="safeArea" id="ZRb-Qv-zDj"/>
                     </view>
                     <connections>
                         <outlet property="label" destination="hvM-1I-GBe" id="1Zj-or-Daa"/>

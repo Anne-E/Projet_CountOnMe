@@ -52,7 +52,7 @@ class SimpleCalc {
         
         // We check if it's an operator
         
-        let isOperator = operators.contains(toAdd)
+        let isOperator: Bool = operators.contains(toAdd)
         
         // If a result is displayed then reset for the next operation
         

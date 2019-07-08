@@ -43,30 +43,26 @@ class CountOnMeTests: XCTestCase {
         simpleCalc.addToExpression("1")
         simpleCalc.addToExpression("+")
         simpleCalc.addToExpression("+")
-        print(simpleCalc.expression)
         XCTAssertEqual(simpleCalc.expression, "1 + ")
     }
     
     func testInvalidOperation1() {
         simpleCalc.addToExpression("1")
-        print(simpleCalc.expression)
         XCTAssertEqual(simpleCalc.expressionHaveEnoughElement, false)
     }
 
     func testInvalidOperation2() {
         simpleCalc.addToExpression("1")
         simpleCalc.addToExpression("+")
-        print(simpleCalc.expression)
         XCTAssertEqual(simpleCalc.expressionHaveEnoughElement, false)
     }
     
-    func testInvalidOperation3() {
+    func testValidOperation3() {
         simpleCalc.addToExpression("33")
         simpleCalc.addToExpression("+")
         simpleCalc.addToExpression("47")
         simpleCalc.addToExpression("+")
         simpleCalc.addToExpression("32")
-        print(simpleCalc.expression)
         XCTAssertEqual(simpleCalc.expressionHaveEnoughElement, true)
     }
     
@@ -109,7 +105,6 @@ class CountOnMeTests: XCTestCase {
         simpleCalc.addToExpression("2")
         simpleCalc.addToExpression("+")
         simpleCalc.addToExpression("5")
-        
         XCTAssertEqual(simpleCalc.calcResult(), "21.0")
     }
     

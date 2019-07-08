@@ -9,7 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet var numberButtons: [UIButton]!
     
@@ -29,7 +28,7 @@ class ViewController: UIViewController {
     
     // Func that manages all the buttons of the calculator
     @IBAction func tappedButton(_ sender: UIButton) {
-        guard let numberText = sender.title(for: .normal) else {
+        guard let numberText: String = sender.title(for: .normal) else {
             return
         }
         
@@ -41,6 +40,7 @@ class ViewController: UIViewController {
         if numberText == "=" {
             if simpleCalc.expressionHaveEnoughElement {
                 updateExpression(simpleCalc.calcResult())
+                return
             }
             else {
                 return
@@ -49,9 +49,10 @@ class ViewController: UIViewController {
         
         if numberText == "AC" {
             updateExpression("")
-        } else {
-            simpleCalc.addToExpression(numberText)
-            updateExpression(simpleCalc.expression)
+            return
         }
+        
+        simpleCalc.addToExpression(numberText)
+        updateExpression(simpleCalc.expression)
     }
 }

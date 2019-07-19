@@ -18,7 +18,7 @@ class SimpleCalc {
         return expression.split(separator: " ").map { "\($0)" }
     }
     
-    // To check that an operation have at leat 3 elements
+    // To check that an operation have at least 3 elements
     var expressionHaveEnoughElement: Bool {
         return elements.count >= 3
     }
@@ -96,7 +96,7 @@ class SimpleCalc {
         return expression
     }
     
-    // func that sets up arithmetic precedence rules
+    // func that contains 2 func to define arithmetic precedence rules
     func calcResult() -> String {
         _ = calcPriorityOperator()
         _ = calcOtherOperator()

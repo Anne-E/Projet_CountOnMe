@@ -6,17 +6,18 @@
 //  Copyright © 2019 Vincent Saluzzo. All rights reserved.
 //
 
-// Test 1 - Deux operateurs ne peuvent pas se suivre
-// Test 2 - Un cacul doit comporter deux nombres et un operateur pour être valide
-// Test 3 - Tester une addition
-// Test 4 - Tester une soustraction
-// Test 5 - Tester une division
-// Test 6 - Tester une multiplication
-// Test 7 - Tester une division par 0
-// Test 8 - Tester une addition suivie d'une multiplication (priorité)
-// Test 9 - Tester un calcul menant a un résultat trop grand
-// Test 10 - Tester que deux virgules ne peuvent pas se suivre
-// Test 11 - Tester un calcul menant à un résultat negatif
+// Test 1 - Can't add 2 operators together
+// Test 2 - A calcul needs at least two numbers and one operator
+// Test 3 - valid operation test
+// Test 4 - Addition test
+// Test 4 - substraction test
+// Test 5 - division test
+// Test 6 - multiplication test
+// Test 7 - division by 0
+// Test 8 - arithmetic priority rules test
+// Test 9 - can't type 2 comas next to the other
+// Test 10 - negative result test
+// Test 11 - overflow test
 
 
 import XCTest
@@ -36,9 +37,6 @@ class CountOnMeTests: XCTestCase {
     }
 
     func testDoubleOperator() {
-        
-    
-        // Use XCTAssertEqual and related functions to verify your tests produce the correct results.
         
         simpleCalc.addToExpression("1")
         simpleCalc.addToExpression("+")

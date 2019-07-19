@@ -14,13 +14,13 @@ class ViewController: UIViewController {
     
     var simpleCalc: SimpleCalc = SimpleCalc()
     
-    // View Life cycles
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         label.adjustsFontSizeToFitWidth = true
     }
     
-    // Updqte UI and Logic expression
+    // Update UI and Logic expression
     func updateExpression(_ newExpression: String) {
         label.text = newExpression
         simpleCalc.expression = newExpression

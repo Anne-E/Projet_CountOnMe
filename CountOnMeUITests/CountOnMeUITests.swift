@@ -1,35 +1,42 @@
 //
+//  CountOnMeUITests.swift
+//  CountOnMeUITests
+//
+//  Created by Anne-Elisabeth on 02/08/2019.
+//  Copyright © 2019 Vincent Saluzzo. All rights reserved.
+//
+
+
 //  SimpleCalcUITests.swift
 //  SimpleCalcUITests
 //
 //  Created by Vincent Saluzzo on 29/03/2019.
 //  Copyright © 2019 Vincent Saluzzo. All rights reserved.
 //
-
 import XCTest
+@testable import CountOnMe
 
 class SimpleCalcUITests: XCTestCase {
-
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
+        
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
-
+        
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
-
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-
+    
+    
     func testAddition() {
         
-                let app = XCUIApplication()
+        let app = XCUIApplication()
         
         app.buttons["1"].tap()
         app.buttons["+"].tap()
@@ -57,7 +64,7 @@ class SimpleCalcUITests: XCTestCase {
         XCTAssert(typeLabel.exists)
         
         app.buttons["="].tap()
-        let resultLabel = app.staticTexts["45.5 = "]
+        let resultLabel = app.staticTexts["45.5"]
         XCTAssert(resultLabel.exists)
     }
     
@@ -72,7 +79,7 @@ class SimpleCalcUITests: XCTestCase {
         let typeLabel = app.staticTexts["2 x 3"]
         XCTAssert(typeLabel.exists)
         app.buttons["="].tap()
-        let resultLabel = app.staticTexts["6.0 = "]
+        let resultLabel = app.staticTexts["6.0"]
         XCTAssert(resultLabel.exists)
     }
     
@@ -87,8 +94,8 @@ class SimpleCalcUITests: XCTestCase {
         let typeLabel = app.staticTexts["2 / 0"]
         XCTAssert(typeLabel.exists)
         app.buttons["="].tap()
-        let resultLabel = app.staticTexts["Error = "]
+        let resultLabel = app.staticTexts["Error"]
         XCTAssert(resultLabel.exists)
     }
-
+    
 }

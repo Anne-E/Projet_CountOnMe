@@ -1,8 +1,8 @@
 //
-//  SimpleCalcTests.swift
-//  SimpleCalcTests
+//  CountOnMeTests.swift
+//  CountOnMeTests
 //
-//  Created by Vincent Saluzzo on 29/03/2019.
+//  Created by Anne-Elisabeth on 02/08/2019.
 //  Copyright © 2019 Vincent Saluzzo. All rights reserved.
 //
 
@@ -21,21 +21,22 @@
 
 
 import XCTest
+@testable import CountOnMe
 
 class CountOnMeTests: XCTestCase {
     
     var simpleCalc: SimpleCalc = SimpleCalc()
-
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
         simpleCalc = SimpleCalc()
     }
-
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func testDoubleOperator() {
         
         simpleCalc.addToExpression("1")
@@ -48,7 +49,7 @@ class CountOnMeTests: XCTestCase {
         simpleCalc.addToExpression("1")
         XCTAssertEqual(simpleCalc.expressionHaveEnoughElement, false)
     }
-
+    
     func testInvalidOperation2() {
         simpleCalc.addToExpression("1")
         simpleCalc.addToExpression("+")
@@ -126,5 +127,5 @@ class CountOnMeTests: XCTestCase {
         simpleCalc.addToExpression("999999999999999999999999")
         XCTAssertEqual(simpleCalc.calcResult(), "inf")
     }
-
+    
 }

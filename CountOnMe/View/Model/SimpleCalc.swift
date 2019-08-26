@@ -24,10 +24,7 @@ class SimpleCalc {
     }
     
     // To allow a new operation after a result
-    var expressionHaveResult: Bool {
-        return expression.firstIndex(of: "=") != nil
-    }
-    
+    var expressionHaveResult: Bool = false    
     
     
     // cannot add two comas one after the other or if the last element is a coma
@@ -58,6 +55,7 @@ class SimpleCalc {
         
         if expressionHaveResult {
             expression = ""
+            expressionHaveResult = false
         }
         
         // if we try to add a coma but it is not possible -> return
@@ -91,8 +89,9 @@ class SimpleCalc {
         if let operand1 = Float(expression),
             let operand2 = Float("100.0") {
             let result = operand1 / operand2
-            self.expression = String(result)
+            expression = String(result)
         }
+        expressionHaveResult = true
         return expression
     }
     
@@ -100,6 +99,7 @@ class SimpleCalc {
     func calcResult() -> String {
         _ = calcPriorityOperator()
         _ = calcOtherOperator()
+        expressionHaveResult = true
         return expression
     }
 }

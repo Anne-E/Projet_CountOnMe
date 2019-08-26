@@ -100,6 +100,7 @@
 		1FA43BD1224E569900F565CB /* CountOnMe */ = {
 			isa = PBXGroup;
 			children = (
+				9A01F908230E8B9A007FD93A /* Model */,
 				9A88F99222CBA46E008CC630 /* View */,
 				9A88F99422CBA524008CC630 /* Controller */,
 				9A88F99322CBA514008CC630 /* Supporting Files */,
@@ -107,11 +108,19 @@
 			path = CountOnMe;
 			sourceTree = "<group>";
 		};
+		9A01F908230E8B9A007FD93A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9A55936022AADBCC00897BC8 /* SimpleCalc.swift */,
+			);
+			name = Model;
+			path = View/Model;
+			sourceTree = "<group>";
+		};
 		9A88F99222CBA46E008CC630 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				1FA43BD6224E569900F565CB /* Main.storyboard */,
-				9A55936022AADBCC00897BC8 /* SimpleCalc.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

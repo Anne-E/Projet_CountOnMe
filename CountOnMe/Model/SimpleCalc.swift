@@ -23,7 +23,7 @@ class SimpleCalc {
         return elements.count >= 3
     }
     
-    // To allow a new operation after a result
+    // bool returns false by default (called in calcResultPercent and calcResult
     var expressionHaveResult: Bool = false    
     
     
